@@ -1,6 +1,6 @@
 import sys
 from argparse import ArgumentParser
-from typing import Union
+import re
 
 import gradio as gr
 from termcolor import colored
@@ -8,23 +8,24 @@ from termcolor import colored
 from tabs import TextToImage, ImageToImage
 
 
-def main(port: Union[int, None], save: bool) -> None:
+def create_demo(save: bool) -> gr.Blocks:
     with gr.Blocks() as demo:
         with gr.Tab('Text to image'):
             TextToImage(save)
         with gr.Tab('Image to image'):
             ImageToImage(save)
 
-    try:
-        demo.launch(
-            favicon_path='resources/static/images/logo.png',
-            server_port=port
-        )
-    except OSError as e:
-        sys.exit(colored('Port is already active, choose different port', 'red'))
+    return demo
 
 
-if __name__ == '__main__':
+"""Solving the problem with using 'gradio main.py' to run the app
+
+When saving the changes in the code, the app is being reloaded
+and 'demo' variable can't be seen because __name__ can be 
+either '__main__' or just 'main' when it's realoaded
+so Gradio can't see it
+"""
+if re.match(r'.*main.*', __name__):
     parser = ArgumentParser(
         usage='python main.py [-p PORT | --port PORT] [-s | --save]',
         description='AI Image Generator WebUI',
@@ -47,4 +48,15 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    main(args.port, args.save)
+    port = args.port
+    save = args.save
+
+    demo = create_demo(save)
+
+    try:
+        demo.launch(
+            favicon_path='resources/static/images/logo.png',
+            server_port=port
+        )
+    except OSError as e:
+        sys.exit(colored('Port is already active, choose different port', 'red'))
