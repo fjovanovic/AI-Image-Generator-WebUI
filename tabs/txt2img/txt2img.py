@@ -102,9 +102,10 @@ class TextToImage(Tab):
                     height = gr.Slider(
                         label='Height',
                         minimum=512,
-                        maximum=1024,
-                        interactive=True
+                        maximum=1024
                     )
+
+                    width.change(self.changed_width, inputs=width, outputs=height)
 
                 with gr.Row():
                     inference_steps = gr.Slider(
@@ -149,10 +150,6 @@ class TextToImage(Tab):
 
     def changed_width(self, width: int) -> int:
         return width
-    
-
-    def changed_height(self, height: int) -> int:
-        return height
     
 
     def generate_text_to_image(self, prompt: str, negative_prompt: str) -> str:
