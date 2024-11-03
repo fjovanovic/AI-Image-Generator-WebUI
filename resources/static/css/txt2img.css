@@ -1,0 +1,15 @@
+.models_dropdown > div *:hover {
+  cursor: pointer;
+}
+
+.generate_div {
+  display: flex;
+}
+
+.generate_btn {
+  flex: 1;
+}
+
+.save_params_btn {
+  flex: 1;
+}
