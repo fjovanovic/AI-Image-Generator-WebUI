@@ -7,13 +7,16 @@ import gradio as gr
 from termcolor import colored
 
 from tabs import TextToImage, ImageToImage
+import utils
 
 
 def create_demo(
     save: Union[bool, None], 
     api_url: Union[str, None]
 ) -> gr.Blocks:
-    with gr.Blocks() as demo:
+    css = utils.get_css('resources/static/css')
+
+    with gr.Blocks(css=css) as demo:
         with gr.Tab('Text to image'):
             TextToImage(save, api_url)
         with gr.Tab('Image to image'):
