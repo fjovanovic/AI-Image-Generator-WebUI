@@ -25,7 +25,7 @@ class TextToImage(Tab):
     def build_tab(self) -> None:
         gr.Dropdown(
             label='Choose pretrained model',
-            value='CompVis/stable-diffusion-v1-1',
+            value='stabilityai/sdxl-turbo',
             choices=TXT2IMG_MODELS,
             interactive=True,
             elem_classes='models_dropdown'
