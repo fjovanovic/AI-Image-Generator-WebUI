@@ -12,15 +12,15 @@ import utils
 
 def create_demo(
     save: Union[bool, None], 
-    api_url: Union[str, None]
+    base_url: Union[str, None]
 ) -> gr.Blocks:
     css = utils.get_css('resources/static/css')
 
     with gr.Blocks(css=css) as demo:
         with gr.Tab('Text to image'):
-            TextToImage(save, api_url)
+            TextToImage(save, base_url)
         with gr.Tab('Image to image'):
-            ImageToImage(save, api_url)
+            ImageToImage(save, base_url)
 
     return demo
 
@@ -44,24 +44,24 @@ if re.match(r'.*main.*', __name__):
         '-p', 
         '--port', 
         type=int, 
-        help='Port number for the application'
+        help='port number for the application'
     )
     parser.add_argument(
         '-s',
         '--save',
         action='store_true',
-        help='If included the media and all parameters will be saved on the path ' \
+        help='if included the media and all parameters will be saved on the path ' \
             f'{colored("resources/generated_images/{datetime}/", "dark_grey")}'
     )
     parser.add_argument(
-        '--api-url',
+        '--base-url',
         action='store',
-        help='API url for the backend',
-        dest='api_url'
+        help='base API url for the backend',
+        dest='base_url'
     )
 
     args = parser.parse_args()
-    demo = create_demo(args.save, args.api_url)
+    demo = create_demo(args.save, args.base_url)
 
     try:
         demo.launch(
