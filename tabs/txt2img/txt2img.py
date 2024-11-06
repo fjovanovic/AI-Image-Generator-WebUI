@@ -12,11 +12,11 @@ class TextToImage(Tab):
     def __init__(
         self, 
         save: Union[bool, None],
-        api_url: Union[str, None]
+        base_url: Union[str, None]
     ):
         super().__init__(
             save=save, 
-            api_url=api_url,
+            base_url=base_url,
             endpoint='/txt2img/generate_images'
         )
         self.build_tab()
@@ -138,9 +138,25 @@ class TextToImage(Tab):
                 )
         
         generate_btn.click(
+            fn=self.disable_generate_btn,
+            outputs=[generate_btn]
+        ).then(
             fn=self.generate_text_to_image, 
-            inputs=[prompt, negative_prompt], 
-            outputs=gallery
+            inputs=[
+                prompt, 
+                negative_prompt,
+                scheduler,
+                num_of_images,
+                seed,
+                width,
+                height,
+                inference_steps,
+                cfg_scale
+            ], 
+            outputs=[
+                gallery, 
+                generate_btn
+            ]
         )
     
 
@@ -152,5 +168,20 @@ class TextToImage(Tab):
         return width
     
 
-    def generate_text_to_image(self, prompt: str, negative_prompt: str) -> str:
+    def disable_generate_btn(self):
+        return gr.update(interactive=False)
+    
+
+    def generate_text_to_image(
+        self, 
+        prompt: str, 
+        negative_prompt: str,
+        scheduler: str,
+        num_of_images: int,
+        seed: str,
+        width: int,
+        height: int,
+        inference_steps: int,
+        cfg_scale: float
+    ) -> str:
         ...
