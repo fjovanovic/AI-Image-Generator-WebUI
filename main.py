@@ -6,7 +6,8 @@ from typing import Union
 import gradio as gr
 from termcolor import colored
 
-from tabs import TextToImage, ImageToImage
+from tabs import TextToImage
+from tabs import ImageToImage
 import utils
 
 
