@@ -3,10 +3,11 @@ from typing import Tuple, Dict, Any
 import gradio as gr
 
 import utils
+import data_types
 
 
 class Models:
-    models: dict
+    models: Dict[str, data_types.ModelInfo]
     default_model: str
 
 
@@ -28,14 +29,14 @@ class Models:
         link_btn = gr.Button(
             value='Link',
             icon='resources/static/images/link_button.png',
-            link=self.models[self.default_model]['link'],
+            link=self.models[self.default_model].link,
             variant='primary',
             elem_classes='models_link'
         )
 
         info = gr.TextArea(
             label='Model information',
-            value=self.models[self.default_model]['info'],
+            value=self.models[self.default_model].info,
             interactive=False
         )
 
@@ -44,6 +45,6 @@ class Models:
 
     def model_chosen(self, model: str) -> Tuple[Dict[str, Any], str]:
         return (
-            gr.update(link=self.models[model]['link']),
-            self.models[model]['info']
+            gr.update(link=self.models[model].link),
+            self.models[model].info
         )
