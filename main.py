@@ -6,8 +6,11 @@ from typing import Union
 import gradio as gr
 from termcolor import colored
 
-from tabs import TextToImage
-from tabs import ImageToImage
+from tabs import (
+    TextToImage,
+    ImageToImage,
+    Models
+)
 import utils
 
 
@@ -22,6 +25,8 @@ def create_demo(
             TextToImage(save, base_url)
         with gr.Tab('Image to image'):
             ImageToImage(save, base_url)
+        with gr.Tab('Models'):
+            Models()
 
     return demo
 
