@@ -12,7 +12,7 @@ class Models:
 
 
     def __init__(self):
-        self.models = utils.load_models_info('tabs/models/models.json')
+        self.models = utils.load_models_info('resources/static/data/models.json')
         self.default_model = 'stabilityai/sdxl-turbo'
         self.build_tab()
     
@@ -34,10 +34,9 @@ class Models:
             elem_classes='models_link'
         )
 
-        info = gr.TextArea(
-            label='Model information',
+        info = gr.Markdown(
             value=self.models[self.default_model].info,
-            interactive=False
+            elem_classes='model_info'
         )
 
         model.change(self.model_chosen, inputs=model, outputs=[link_btn, info])
