@@ -13,3 +13,7 @@
 .save_params_btn {
   flex: 1;
 }
+
+.txt2img_generated_images {
+  height: 512px;
+}
