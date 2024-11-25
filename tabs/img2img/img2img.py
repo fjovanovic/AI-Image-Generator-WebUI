@@ -52,7 +52,7 @@ class ImageToImage(Tab):
 
         with gr.Row(elem_classes='img2img_images_div'):
             input_image = gr.Image(
-                elem_classes='img2img_image'
+                label='Input image'
             )
 
             generate_btn = gr.Button(
@@ -62,7 +62,7 @@ class ImageToImage(Tab):
             )
 
             output_image = gr.Image(
-                elem_classes='img2img_image'
+                label='Output image'
             )
 
         generate_btn.click(

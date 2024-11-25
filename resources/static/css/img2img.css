@@ -3,10 +3,6 @@
   align-items: center;
 }
 
-.img2img_image {
-  height: 512px;
-}
-
 .img2img_generate_btn {
   height: 50px;
   max-width: 10%;
