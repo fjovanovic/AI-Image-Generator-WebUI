@@ -20,7 +20,7 @@ def create_demo(
 ) -> gr.Blocks:
     css = utils.get_css('resources/static/css')
 
-    with gr.Blocks(css=css) as demo:
+    with gr.Blocks(title='AI Image Generator', css=css) as demo:
         with gr.Tab('Text to image'):
             TextToImage(save, base_url)
         with gr.Tab('Image to image'):
@@ -35,7 +35,7 @@ def create_demo(
 
 When saving the changes in the code, the app is being reloaded
 and 'demo' variable can't be seen because __name__ can be 
-either '__main__' or just 'main' when it's realoaded
+either '__main__' or just 'main' when it's reloaded
 so Gradio can't see it
 """
 if re.match(r'.*main.*', __name__):
