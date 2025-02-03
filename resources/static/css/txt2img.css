@@ -15,5 +15,5 @@
 }
 
 .txt2img_generated_images {
-  height: 512px;
+  min-height: 512px;
 }
