@@ -13,7 +13,7 @@ class Models:
 
     def __init__(self):
         self.models = utils.load_models_info('resources/static/data/models.json')
-        self.default_model = 'stabilityai/sdxl-turbo'
+        self.default_model = 'stabilityai/stable-diffusion-xl-base-1.0'
         self.build_tab()
     
 
