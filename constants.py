@@ -1,4 +1,5 @@
 TXT2IMG_MODELS = [
+    'stabilityai/stable-diffusion-xl-base-1.0',
     'stabilityai/sdxl-turbo',
     'CompVis/stable-diffusion-v1-1',
     'CompVis/stable-diffusion-v1-2',
