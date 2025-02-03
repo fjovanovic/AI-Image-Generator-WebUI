@@ -5,7 +5,7 @@ TXT2IMG_MODELS = [
     'CompVis/stable-diffusion-v1-2',
     'CompVis/stable-diffusion-v1-3',
     'CompVis/stable-diffusion-v1-4',
-    'runwayml/stable-diffusion-v1-5'
+    'stable-diffusion-v1-5/stable-diffusion-v1-5'
 ]
 
 TXT2IMG_SCHEDULERS = [
