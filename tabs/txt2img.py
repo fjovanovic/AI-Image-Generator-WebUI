@@ -20,7 +20,7 @@ import data_types
 
 
 class TextToImage(Tab):
-    data: data_types.Text2ImageData
+    data: data_types.TextToImageData
 
 
     def __init__(
@@ -236,7 +236,7 @@ class TextToImage(Tab):
             'run_on': run_on
         }
 
-        self.data = data_types.Text2ImageData(**params)
+        self.data = data_types.TextToImageData(**params)
 
         url = f'{self.base_url}{self.endpoint}'
         response = requests.get(url, params=params)
