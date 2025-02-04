@@ -15,3 +15,5 @@ TXT2IMG_SCHEDULERS = [
     'LMS',
     'DPM-Solver'
 ]
+
+SAVE_DIR = 'resources/generated_images/'
