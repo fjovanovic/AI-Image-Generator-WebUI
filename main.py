@@ -41,7 +41,7 @@ so Gradio can't see it
 if re.match(r'.*main.*', __name__):
     parser = ArgumentParser(
         usage='python main.py [-p PORT | --port PORT] [-s | --save] '\
-            '[--api-url API_URL]',
+            '[--base-url BASE_URL]',
         description='AI Image Generator WebUI',
         allow_abbrev=False
     )
