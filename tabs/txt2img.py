@@ -34,6 +34,7 @@ class TextToImage(Tab):
             endpoint='/txt2img/generate_images'
         )
         self.build_tab()
+        self.data = None
 
 
     def build_tab(self) -> None:
@@ -188,6 +189,16 @@ class TextToImage(Tab):
             fn=self.enable_btn,
             outputs=generate_btn
         )
+
+        save_params_btn.click(
+            fn=self.disable_btn,
+            outputs=save_params_btn
+        ).then(
+            fn=self.save_params
+        ).then(
+            fn=self.enable_btn,
+            outputs=save_params_btn
+        )
     
 
     def generate_random_seed(self) -> int:
@@ -270,6 +281,18 @@ class TextToImage(Tab):
         
         return images
 
+
+    def save_params(self) -> None:
+        if self.data is None:
+            raise gr.Error('Generate image first')
+        
+        current_timestamp = str(dt.datetime.now().replace(microsecond=0)).replace(':', '-')
+        dir_path = os.path.join(SAVE_DIR, current_timestamp)
+        os.makedirs(dir_path)
+        params_str = self.get_params()
+        with open(f'{dir_path}/params.txt', 'w') as f:
+            f.write(params_str)
+    
 
     def enable_btn(self) -> Dict[str, Any]:
         return gr.update(interactive=True)
