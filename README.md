@@ -13,7 +13,8 @@ The backend for this project is available on [this repository](https://github.co
   
   <img src="/resources/examples/img2img.png" alt="Text to image" height=600>
 
-## Prerequisites
+## Prerequisites 
+- ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg) 
 - `venv`
   
   > Before installing dependencies it is highly recommended to work in [virtual environment](https://docs.python.org/3/library/venv.html).
